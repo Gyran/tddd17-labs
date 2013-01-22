@@ -33,4 +33,27 @@ This is more secure than a ordinary password because it uses something that the 
 \label{fig:sequence-diagram}
 \end{figure}
 
+\section*{Exercise 2}
+\subsection*{2-1}
+\subsubsection*{OpenID}
+OpenID is used to authenticate a specific user by giving its identity, which is granted or not by the provider. The application has to know and verify using a certificate who you are to give the permission to access.
+
+\subsubsection*{OAuth}
+OAuth is used to authenticate by using a key to get access given by the provider which has identified the user/process. This means that the application you log into doesn't need to know who you are, just that you have the permission (key) to access it on user's behalf.
+
+\subsection*{2-2}
+\begin{enumerate}
+\item OpenID delivers a certificate (the information needed to get access) whereas OAuth delivers a key (the means to access directly)
+\item OAuth is about the user authorize the application to do things on the users behalf and OpenID authenticate the user so that the user can access the application.
+\item OpenID only communicate with the user and OAuth allows the application the communicate with other applications that the user has authorized access to. 
+\item With OpenID the user can login to multiple websites using the same account information. With OAuth the user can share resources between applications.
+\item With OpenID each application sees the user as a unique user and he has to specifically login to all the websites that uses OpenID. With OAuth the user only have to authenticate once to get access to several applications. 
+\end{enumerate}
+
+\subsection*{2-3}
+For both the application, being able to log in once extends the scope of the attacker (as you gain access to more than one account/application): For OpenID, getting the log in information for one means that you got them for everything. For OAuth being logged in to one application can mean you are logged in to a lot of them.
+
+\section*{Exercise 3}
+
+
 \end{document}

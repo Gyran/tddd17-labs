@@ -6,7 +6,7 @@
 
 require_once('./tools.php');
 
-if (isset($_POST["signup"])) {
+if (isset($_POST["signup"])) { // if the user tries to sign up
 
 	$username = $_POST["username"];
 	if (!userExists($username)) {
@@ -30,14 +30,14 @@ jQuery('#qr').qrcode({
 
 <?php
 		}
-	} else {
+	} else { // The username already existed
 		echo "username already exists<br>";
 		echo '<a href="signup.php">Signup</a>';
 	}
 	
 
 
-} else {
+} else { // Show the signup form
 
 ?>
 

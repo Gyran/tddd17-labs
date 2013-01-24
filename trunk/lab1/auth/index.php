@@ -11,21 +11,21 @@ require_once('./tools.php');
 
 <?php
 
-if (isset($_POST["login2"])) {
+if (isset($_POST["login2"])) { // The user has scanned the qrcode and tries to login
 	$username = $_POST["username"];
 	$websecret = $_POST["secret"];
 	$usersecret = $_POST["usersecret"];
 	$account = getAccount($username);
 
-	$expected = $websecret + $account->getSecret();
+	$expected = $websecret + $account->getSecret(); // the expected password is qrcode + the accounts secret
 
-	if ($usersecret == $expected) {
+	if ($usersecret == $expected && $account != null) { 
 		echo "YAY! you are logged in";
 	} else {
 		echo "Wrong password";
 	}
 
-} else if (isset($_POST["login"])) {
+} else if (isset($_POST["login"])) { // First step in the login process, display the qr code
 ?>
 
 <form method="post" action="">
@@ -56,10 +56,8 @@ jQuery('#qr').qrcode({
 </script>
 
 <?php
-} else {
+} else { // show the normal loginform
 
-
-// loginform
 ?>
 
 <form method="post" action="">

@@ -1,7 +1,7 @@
 <?php
 
 
-class Account {
+class Account { // The basic class for an account
 	private $username;
 	private $secret;
 
@@ -19,7 +19,7 @@ class Account {
 	}
 }
 
-function readAccounts() {
+function readAccounts() { // Reads all the accounts from a file and returns them in an array
 	$accounts = array();
 
 	$fd = fopen("accounts", "r");
@@ -37,8 +37,8 @@ function readAccounts() {
 	return $accounts;
 }
 
-function signup($username) {
-	$secret = rand(1, 10);
+function signup($username) { // Saves a new account
+	$secret = rand(1, 10); // generate a secret
 	$account = $username . ":" . $secret . "\n";
 
 	$fd = fopen("accounts", 'a');
@@ -51,7 +51,7 @@ function signup($username) {
 	return 0;
 }
 
-function userExists($username) {
+function userExists($username) { // returns true if a account with that username already exists
     $accounts = readAccounts();
 	foreach ($accounts as $account) {
 		if ($account->getUsername() == $username) {
@@ -62,7 +62,7 @@ function userExists($username) {
 	return false;
 }
 
-function getAccount($username) {
+function getAccount($username) { // returns the account with that username, otherwhise false
 	foreach (readAccounts() as $account) {
 		if ($account->getUsername() == $username) {
 			return $account;

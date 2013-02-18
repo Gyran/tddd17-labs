@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.5.13)  5 FEB 2013 14:09
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.5.13)  18 FEB 2013 17:27
 **report.tex
 (./report.tex{/sw/texalt/teTeX-2.0.2/share/texmf/pdftex/config/pdftex.cfg}
 LaTeX2e <2001/06/01>
@@ -168,16 +168,136 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--30
 
  []
 
-[2] [3] (./report.aux) ) 
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 65--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--77
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 79--91
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--91
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--91
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 113--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--158
+
+ []
+
+[5] [6] (./report.aux) ) 
 Here is how much of TeX's memory you used:
  1473 strings out of 95409
  18038 string characters out of 1188667
- 66799 words of memory out of 1000001
+ 67799 words of memory out of 1000001
  4510 multiletter control sequences out of 10000+50000
  9475 words of font info for 24 fonts, out of 500000 for 1000
  34 hyphenation exceptions out of 1000
  25i,6n,31p,333b,219s stack positions out of 1500i,500n,5000p,200000b,5000s
- 15 PDF objects out of 300000
+ 24 PDF objects out of 300000
  0 named destinations out of 131072
  0 words of extra memory for PDF output out of 65536
  </sw/texalt/teTeX-2.0.2/share/texmf/fonts/pk/ljfour/jk
@@ -186,4 +306,4 @@ c/ecbx1728.600pk> </sw/texalt/teTeX-2.0.2/share/texmf/fonts/pk/ljfour/jknappen/
 ec/ecrm1200.600pk> </sw/texalt/teTeX-2.0.2/share/texmf/fonts/pk/ljfour/jknappen
 /ec/ecrm1440.600pk> </sw/texalt/tmp/tetexfonts-2.0.2/pk/ljfour/jknappen/ec/ecrm
 2074.600pk>
-Output written on report.pdf (3 pages, 49405 bytes).
+Output written on report.pdf (6 pages, 61379 bytes).

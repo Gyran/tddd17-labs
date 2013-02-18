@@ -59,6 +59,103 @@ iptables -t nat -A POSTROUTING -s 10.0.0.0/8 ! -d 10.0.0.0/8 -j SNAT --to-source
 \subsection*{9-2}
 IP addresses are carried in FTP packet are readable and of variable length. As NAT requires to rewrite them, it can change the length of the TCP packet, and SEQ and ACK numbers have to be changed.
 
+\section*{Exercise 11}
+
+\subsection*{General policy}
+1\newline
+iptables -P FORWARD DROP\newline
+iptables -I FORWARD -i eth0 -o eth1 -m state --state ESTABLISHED,RELATED -j ACCEPT\newline
+iptables -I FORWARD -i eth0 -o eth2 -m state --state ESTABLISHED,RELATED -j ACCEPT\newline
+\newline
+2\newline
+iptables -I FORWARD -i eth1 -o eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT\newline
+iptables -I FORWARD -i eth1 -o eth2 -m state --state ESTABLISHED,RELATED -j ACCEPT\newline
+\newline
+3\newline
+iptables -I FORWARD -i eth2 -o eth0 -j ACCEPT\newline
+iptables -I FORWARD -i eth2 -o eth1 -j ACCEPT\newline
+
+\subsection*{DNS}
+4\newline
+iptables -I FORWARD -i eth0 -p tcp -d 10.19.11.12 --dport 53 -j ACCEPT\newline
+iptables -I FORWARD -i eth0 -p udp -d 10.19.11.12 --dport 53 -j ACCEPT\newline
+\newline
+5\newline
+iptables -I FORWARD -i eth1 -p udp --dport 53 -d 10.19.11.142 -j ACCEPT\newline
+iptables -I FORWARD -i eth1 -p tcp --dport 53 -d 10.19.11.142 -j ACCEPT\newline
+\newline
+6\newline
+This is taken care of by rule 2.\newline
+7\newline
+iptables -I FORWARD -i eth1 -p udp -s 10.19.11.12 --dport 53 -j ACCEPT\newline
+
+\subsection*{Mail}
+8\newline
+iptables -I FORWARD -i eth0 -p tcp -d 10.19.11.11 --dport 25 -j ACCEPT\newline
+\newline
+9\newline
+iptables -I FORWARD -i eth1 -p tcp -s 10.19.11.11 -d 10.19.11.141 --dport 25 -j ACCEPT\newline
+\newline
+10\newline
+Is taken care of by rule 3\newline
+\newline
+11\newline
+iptables -I FORWARD -i eth2 -p tcp ! -s 10.19.11.141 --dport 25 -j DROP\newline
+iptables -I FORWARD -i eth2 -p tcp -d 10.19.11.141 --dport 25 -j ACCEPT\newline
+\newline
+
+\subsection*{Web}
+12\newline
+iptables -I FORWARD -i eth0 -p tcp -d 10.19.11.10 --dport 443 -j ACCEPT\newline
+iptables -I FORWARD -i eth0 -p tcp -d 10.19.11.10 --dport 80 -j ACCEPT\newline
+
+\subsection*{Firewall}
+13\newline
+iptables -I INPUT -i lo -j ACCEPT\newline
+\newline
+14\newline
+iptables -I INPUT -p udp -d 224.0.0.9 --dport 520 -j ACCEPT\newline
+\newline
+15\newline
+iptables -A INPUT -i eth2 -p tcp --dport 22 -j ACCEPT\newline
+\newline
+16\newline
+iptables -P INPUT DROP\newline
+
+\subsection*{Other}
+17\newline
+iptables -t nat -A POSTROUTING -o eth2 -d 10.19.11.0/24 -j SNAT --to-source 192.168.12.0-192.168.12.255\newline
+\newline
+18\newline
+iptables -I FORWARD -i eth0 -o eth2 --match policy --pol ipsec --dir in -j ACCEPT\newline
+\newline
+19\newline
+iptables -N ICMP\_CHAIN\newline
+iptables -I FORWARD -p icmp -j ICMP\_CHAIN\newline
+iptables -I ICMP\_CHAIN -j DROP\newline
+iptables -I ICMP\_CHAIN -p icmp --icmp-type 3 -j ACCEPT\newline
+iptables -I ICMP\_CHAIN -p icmp --icmp-type 4 -j ACCEPT\newline
+iptables -I ICMP\_CHAIN -p icmp --icmp-type 5 -j ACCEPT\newline
+iptables -I ICMP\_CHAIN -p icmp --icmp-type 9 -j ACCEPT\newline
+\newline
+20\newline
+iptables -N AS\_LOG\newline
+iptables -I AS\_LOG -j DROP\newline
+iptables -I AS\_LOG -j LOG --log-level info --log-prefix "ADDRESS SPOOFING DETECTED"\newline
+iptables -I FORWARD -i eth2 -m iprange ! --src-range 10.19.11.129-10.19.11.255 -j AS\_LOG\newline
+iptables -I FORWARD -i eth2 ! -s 192.168.12.0/24 -j AS\_LOG\newline
+\newline
+21\newline
+iptables -I FORWARD -i eth1 -m iprange ! --src-range 10.19.11.0-10.19.11.128 -j AS\_LOG\newline
+\newline
+22\newline
+iptables -I FORWARD -i eth0 -s 192.168.12.0/24 -j AS\_LOG\newline
+iptables -I FORWARD -i eth0 -s 10.19.11.0/24 -j AS\_LOG\newline
+\newline
+23\newline
+Answered in question 20\newline
+\newline
+
 
 
 \end{document}
